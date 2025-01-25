@@ -157,6 +157,8 @@ newapi = tweepy.Client(
 
 # Create API object using the old twitter APIv1.1
 api = tweepy.API(auth)
+
+print(api.rate_limit_status())
 time.sleep(10)
 
 
@@ -182,4 +184,5 @@ for tweet_content in postok:
     except Exception as e:
         print(e)
         pass
+
 
