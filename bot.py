@@ -16,27 +16,6 @@ CONSUMER_KEY = os.environ.get("CONSUMER_KEY")
 CONSUMER_SECRET = os.environ.get("CONSUMER_SECRET")
 BEARER_TOKEN = os.environ.get("BEARER_TOKEN")
 OPEN_AI_API_KEY = os.environ.get("OPEN_AI_API_KEY")
-print('-----------------')
-print(ACCESS_KEY[0])
-print(ACCESS_KEY[-1])
-print('-----------------')
-
-print(ACCESS_SECRET[0])
-print(ACCESS_SECRET[-1])
-print('-----------------')
-
-print(CONSUMER_KEY[0])
-print(CONSUMER_KEY[-1])
-print('-----------------')
-
-print(CONSUMER_SECRET[0])
-print(CONSUMER_SECRET[-1])
-print('-----------------')
-
-print(BEARER_TOKEN[0])
-print(BEARER_TOKEN[-1])
-
-    
 
 headers = {
     'accept': 'text/x-component',
