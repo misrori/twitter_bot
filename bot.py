@@ -157,11 +157,14 @@ newapi = tweepy.Client(
 
 # Create API object using the old twitter APIv1.1
 api = tweepy.API(auth)
+time.sleep(10)
+
 
 main_tweet = f"📰 Daily Crypto Highlights {pd.Timestamp.now().strftime('%Y-%m-%d')} !"
 
 # FMain tweet
 main_post = newapi.create_tweet(text=main_tweet)
+time.sleep(10)
 
 # A thread ID
 thread_id = main_post.data['id']
