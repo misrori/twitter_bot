@@ -69,10 +69,11 @@ df['publish_date'] = pd.to_datetime(df['publish_date'], format='mixed')
 
 
 # Get the current time in UTC
-current_time = pd.to_datetime('now', utc=True)
+#current_time = pd.to_datetime('now', utc=True)
 
 # Filter rows where the publish date is within the last 24 hours
-df = df[df['publish_date'] > current_time - pd.Timedelta(days=1)]
+#df = df[df['publish_date'] > current_time - pd.Timedelta(days=1)]
+df = df.head(20)
 
 
 # Convert the DataFrame to a list of dictionaries
