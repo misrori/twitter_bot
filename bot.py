@@ -102,7 +102,7 @@ Requirements:
 """
 
 
-#print(prompt)
+print(prompt)
 
 
 

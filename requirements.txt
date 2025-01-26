@@ -1,4 +1,4 @@
 pandas
+python-dotenv
 openai
 tweepy
-python-dotenv
