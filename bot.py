@@ -67,14 +67,18 @@ df = pd.DataFrame(list(map(lambda x:{
 #filter df if publish date older than 24 hours with format 2025-01-23T13:40:35Z
 df['publish_date'] = pd.to_datetime(df['publish_date'], format='mixed')
 
+df_top8 = df.head(8)
 
 # Get the current time in UTC
-#current_time = pd.to_datetime('now', utc=True)
+current_time = pd.to_datetime('now', utc=True)
 
 # Filter rows where the publish date is within the last 24 hours
-#df = df[df['publish_date'] > current_time - pd.Timedelta(days=1)]
-df = df.head(20)
+df = df[df['publish_date'] > current_time - pd.Timedelta(days=1)]
+if len(df) < 8:
+    df = df_top8
 
+# Reset the index of the filtered DataFrame
+df.reset_index(drop=True, inplace=True)
 
 # Convert the DataFrame to a list of dictionaries
 news_data = df[['title', 'body', 'url']].to_dict(orient='records')
