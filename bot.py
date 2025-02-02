@@ -43,8 +43,8 @@ response = requests.post('https://www.coindesk.com/latest-crypto-news', headers=
 t = response.text
 t = t.split('\n')
 
-raw_data=list(filter(lambda x: x.startswith('1:{"articles"'), t))[0]
-start_index = raw_data.find("{")  # Az első "{" pozíciója
+raw_data=list(filter(lambda x: "articles" in x, t))[0]
+start_index = raw_data.find('{"articles')  # Az első "{" pozíciója
 json_data = raw_data[start_index:]  # Minden innen indul
 
 # JSON betöltése
