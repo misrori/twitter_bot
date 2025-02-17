@@ -9,6 +9,15 @@ import tweepy
 import time
 from scrapethat import *
 
+def get_one_box(box):
+    title = box.select_one('h3').text
+    teaser = box.select('p')[1].text
+    link = "https://www.coindesk.com/" + box.select('a')[1]['href']
+    return {
+        'title': title,
+        'teaser': teaser,
+        'link': link
+    }
 
 load_dotenv()
 
@@ -22,7 +31,12 @@ OPEN_AI_API_KEY = os.environ.get("OPEN_AI_API_KEY")
 # get news
 
 t = read_cloud('https://www.coindesk.com/latest-crypto-news')
-news_text = '\n'.join([x.text  for x in t.select('.bg-white.flex.gap-6.w-full.shrink.justify-between')])
+
+# news_text = '\n'.join([x.text  for x in t.select('.bg-white.flex.gap-6.w-full.shrink.justify-between')])
+df = pd.DataFrame(list(map(get_one_box, t.select('.bg-white.flex.gap-6.w-full.shrink.justify-between'))))
+
+news_text = df.to_dict(orient='records')
+
 
 # Prompt prepatation
 prompt = f"""
@@ -46,7 +60,6 @@ Requirements:
 7. Make sure you split the articles with two newlines (\n\n).
 8. The response should only be the Twitter posts and nothing else.
 """
-
 
 
 client = OpenAI(
