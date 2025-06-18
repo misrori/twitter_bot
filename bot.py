@@ -9,6 +9,7 @@ import tweepy
 import time
 from scrapethat import *
 
+
 def get_one_box(box):
     title = box.select_one('h2').text
     teaser = box.select('p')[1].text
